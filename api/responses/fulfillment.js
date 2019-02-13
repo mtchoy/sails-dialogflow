@@ -38,7 +38,7 @@ module.exports = function () {
   let intentMap = new Map();
   intentMap.set('Default Welcome Intent', welcome);
   intentMap.set('Default Fallback Intent', fallback);
-  intentMap.set('User provides type', userProvidesType);
+  intentMap.set('User provides type', userProvidesType );
   // intentMap.set('<INTENT_NAME_HERE>', yourFunctionHandler);
   // intentMap.set('<INTENT_NAME_HERE>', googleAssistantHandler);
   agent.handleRequest(intentMap);
