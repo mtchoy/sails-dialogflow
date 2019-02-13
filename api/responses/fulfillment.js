@@ -37,7 +37,7 @@ module.exports = function () {
       context: `${params.wasteType}? Cool. To locate you`,
       permissions: conv.data.requestedPermission,
     }));
-    agent.add(conv);
+    return agent.add(conv);
 
   }
 
