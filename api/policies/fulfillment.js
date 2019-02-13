@@ -21,7 +21,7 @@ app.intent('User provides type', (conv, params) => {
 
     conv.data.requestedPermission = 'DEVICE_PRECISE_LOCATION';
     return conv.ask(new Permission({
-        context: `${params.wasteType}? Cool. To locate you`,
+        context: `${params.wasteType}? Cool 2. To locate you`,
         permissions: conv.data.requestedPermission,
     }));
 
@@ -69,12 +69,12 @@ app.intent('User grants permission', (conv, params, permissionGranted) => {
 
                 if (!nearest_cp) return conv.close("No collection point nearby.");
 
-                conv.close(`The nearest collection point is at ${nearest_cp.address_en}, it's one for ${nearest_cp.waste_type}.`);
+                conv.close(`The nearest collection point is at ${nearest_cp["address1-en"]}, it's one for ${nearest_cp["waste-type"]}.`);
 
                 return conv.close(new BasicCard({
                     buttons: new Button({
                         title: 'See it on Google Map',
-                        url: `https://www.google.com/maps/search/?api=1&query=${nearest_cp.lat},${nearest_cp.lgt}`,
+                        url: `https://www.google.com/maps/search/?api=1&query=${nearest_cp["lat-long"][0]},${nearest_cp["lat-long"][1]}`,
                     }),
                     image: new Image({
                         url: 'https://img.icons8.com/color/1600/google-maps.png',
