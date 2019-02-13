@@ -20,16 +20,16 @@ module.exports = function () {
 
   // app.intent('User provides type', (conv, params) => {
 
-  function userProvidesType(agent, params) {
+  function userProvidesType(agent) {
 
-    if (["Drink Carton", "Coffee Capsule"].includes(params.wasteType)) {
+    if (["Drink Carton", "Coffee Capsule"].includes(agent.parameters.wasteType)) {
       return agent.close(`This can't be recycled!!!`);
     }
 
     agent.data.requestedPermission = 'DEVICE_PRECISE_LOCATION';
 
     return agent.ask(new Permission({
-      context: `${params.wasteType}? Cool. To locate you`,
+      context: `${agent.parameters.wasteType}? Cool. To locate you`,
       permissions: agent.data.requestedPermission,
     }));
 
