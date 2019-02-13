@@ -43,7 +43,7 @@ module.exports = function () {
 
         let conv = agent.conv();
         let params = agent.parameters;
-        let permissionGranted = agent.permissionGranted;
+        let permissionGranted = agent.isPermissionGranted();
 
         if (!permissionGranted) {
             conv.close('Sorry, permission denied.');
