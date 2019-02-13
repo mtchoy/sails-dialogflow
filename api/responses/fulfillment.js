@@ -47,14 +47,14 @@ module.exports = function () {
 
         if (!permissionGranted) {
             conv.close('Sorry, permission denied.');
-            return agent.end(conv);
+            return agent.add(conv);
         }
 
         const { requestedPermission } = conv.data;
 
         if (requestedPermission !== 'DEVICE_PRECISE_LOCATION') {
             conv.close('Sorry, I could not figure out where you are.');
-            return agent.end(conv);
+            return agent.add(conv);
         }
 
         const { coordinates } = conv.device.location;
@@ -91,7 +91,7 @@ module.exports = function () {
 
                     if (!nearest_cp) {
                         conv.close("No collection point nearby.");
-                        return agent.end(conv);
+                        return agent.add(conv);
                     }
 
                     conv.close(`The nearest collection point is at ${nearest_cp.address_en}, it's one for ${nearest_cp.waste_type}.`);
@@ -108,13 +108,13 @@ module.exports = function () {
                         display: 'CROPPED',
                     }));
 
-                    return agent.end(conv);
+                    return agent.add(conv);
 
                 })
                 .catch(err => {
                     // You should also return a message here of some sort
                     conv.close("Error fetching data from Gov.hk");
-                    return agent.end(conv)
+                    return agent.add(conv)
                 });
 
         }
