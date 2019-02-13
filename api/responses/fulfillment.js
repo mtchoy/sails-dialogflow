@@ -27,17 +27,17 @@ module.exports = function () {
     let params = agent.parameters;
 
     if (["Drink Carton", "Coffee Capsule"].includes(params.wasteType)) {
-      conv.close(`This can't be recycled!!!`);
-      return agent.end(conv);
+      return conv.close(`This can't be recycled!!!`);
+      // return agent.end(conv);
     }
 
     conv.data.requestedPermission = 'DEVICE_PRECISE_LOCATION';
 
-    conv.ask(new Permission({
+    return conv.ask(new Permission({
       context: `${params.wasteType}? Cool. To locate you`,
       permissions: conv.data.requestedPermission,
     }));
-    return agent.add(conv);
+    // return agent.add(conv);
 
   }
 
