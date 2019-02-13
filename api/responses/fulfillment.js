@@ -27,7 +27,7 @@ module.exports = function () {
 
     if (["Drink Carton", "Coffee Capsule"].includes(params.wasteType)) {
       conv.close(`This can't be recycled!!!`);
-      return agent.add(conv);
+      return agent.end(conv);
     }
 
     conv.data.requestedPermission = 'DEVICE_PRECISE_LOCATION';
