@@ -78,7 +78,7 @@ module.exports = function () {
                 .then(body => {
 
                     var parsed = JSON.parse(body);
-                    console.log(parsed.results.length);
+                    console.log("length", parsed.results.length);
 
                     var nearest_cp = null;
 
