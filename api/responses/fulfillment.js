@@ -22,7 +22,9 @@ module.exports = function () {
 
   function userProvidesType(agent) {
 
-    let conv = agent.conv;
+    console.log(req);
+
+    let conv = agent.conv();
     let params = agent.parameters;
 
     if (["Drink Carton", "Coffee Capsule"].includes(params.wasteType)) {
