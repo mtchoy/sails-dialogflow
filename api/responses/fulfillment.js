@@ -45,6 +45,8 @@ module.exports = function () {
         let params = agent.parameters;
         let permissionGranted = agent.isPermissionGranted();
 
+        console.log(agent);
+
         if (!permissionGranted) {
             conv.close('Sorry, permission denied.');
             return agent.add(conv);
