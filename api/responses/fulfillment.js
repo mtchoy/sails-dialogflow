@@ -19,8 +19,6 @@ module.exports = function () {
         agent.add(`I'm sorry, can you try again?`);
     }
 
-    // app.intent('User provides type', (conv, params) => {
-
     function userProvidesType(agent) {
 
         let conv = agent.conv();
