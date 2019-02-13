@@ -153,7 +153,7 @@ app.intent('User provides type', (conv, params) => {
 
     conv.data.requestedPermission = 'DEVICE_PRECISE_LOCATION';
     return conv.ask(new Permission({
-        context: `${params.wasteType}? Cool2. To locate you`,
+        context: `${params.wasteType}? Cool cool. To locate you`,
         permissions: conv.data.requestedPermission,
     }));
 
