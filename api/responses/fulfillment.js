@@ -22,15 +22,18 @@ module.exports = function () {
 
   function userProvidesType(agent) {
 
-    if (["Drink Carton", "Coffee Capsule"].includes(agent.parameters.wasteType)) {
-      return agent.close(`This can't be recycled!!!`);
+    const conv = agent.conv();
+    const params = agent.parameters;
+
+    if (["Drink Carton", "Coffee Capsule"].includes(params.wasteType)) {
+      return conv.close(`This can't be recycled!!!`);
     }
 
-    agent.data.requestedPermission = 'DEVICE_PRECISE_LOCATION';
+    conv.data.requestedPermission = 'DEVICE_PRECISE_LOCATION';
 
-    return agent.ask(new Permission({
-      context: `${agent.parameters.wasteType}? Cool. To locate you`,
-      permissions: agent.data.requestedPermission,
+    return conv.ask(new Permission({
+      context: `${params.wasteType}? Cool. To locate you`,
+      permissions: conv.data.requestedPermission,
     }));
 
   }
