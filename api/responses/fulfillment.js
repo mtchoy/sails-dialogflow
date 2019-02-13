@@ -138,7 +138,7 @@ const { Card, Suggestion } = require('dialogflow-fulfillment');
 const { dialogflow, Permission, BasicCard, Button, Image } = require('actions-on-google');
 const request = require('request-promise-native');
 
-const app = dialogflow();
+const app = dialogflow(req, res);
 
 app.intent('User provides type', (conv, params) => {
 
@@ -151,7 +151,7 @@ app.intent('User provides type', (conv, params) => {
 
     conv.data.requestedPermission = 'DEVICE_PRECISE_LOCATION';
     return conv.ask(new Permission({
-        context: `${params.wasteType}? Cool 4. To locate you`,
+        context: `${params.wasteType}? Cool 5. To locate you`,
         permissions: conv.data.requestedPermission,
     }));
 
