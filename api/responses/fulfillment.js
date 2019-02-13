@@ -22,8 +22,8 @@ module.exports = function () {
 
   function userProvidesType(agent) {
 
-    const conv = agent.conv();
-    const params = agent.parameters;
+    let conv = agent.conv();
+    let params = agent.parameters;
 
     if (["Drink Carton", "Coffee Capsule"].includes(params.wasteType)) {
       return conv.close(`This can't be recycled!!!`);
